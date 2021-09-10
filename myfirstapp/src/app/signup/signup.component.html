@@ -1,0 +1,59 @@
+<app-home></app-home>
+
+<div class="container">
+  <form class= "row row-cols-sm-auto g-3 align-items-center" (ngSubmit)="onsubmit(f)" #f="ngForm" >
+    <div>
+      <div class="col-md-6">
+        <div class="form-group">
+        <label for="Name" class="form-label">Name</label>
+        <input name="firstname" type="text" class="form-control" id="FirstName" placeholder="FirstName"
+         [(ngModel)]="firstname" required>
+      </div>
+    </div>
+      <div class="col-md-6">
+        <div class="form-group">
+        <label for="Name" class="form-label">UserName</label>
+        <input type="text" name="userName" class="form-control" id="UserName" placeholder="UserName" 
+        [(ngModel)]="userName" required>
+      </div>
+    </div>
+      <div class="col-md-6">
+        <div class="form-group">
+        <label for="email" class="form-label">Email</label>
+        <input name="email" type="email" class="form-control" id="inputEmail" placeholder="Type your Email"
+        [(ngModel)]="email" required email >
+          <!-- <span class="help-block" *ngIf="!email.valid && email.touched">Please Enter Valid Email!</span> -->
+        </div>
+      </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+        <label for="Password" class="form-label">Password</label>
+        <input name="password" type="password" class="form-control" id="Password"placeholder="Password"
+        [(ngModel)]="password" required>
+      </div>
+         
+      <div class="col-md-12">
+        <div class="form-group">
+        <label for="ConfirmPassword" class="form-label">Confirm Password</label>
+        <input name="confirmpassword" type="password" class="form-control" id="ConfirmPassword" 
+        [(ngModel)]="confirmpassword" required>
+          
+      </div>
+    </div>
+    </div>
+    
+    
+    <div>
+      <div class="col-md-12">
+        <button type="button" (click) ="registerUser()" [disabled]="!f.valid"  class="btn btn-primary"
+         >Sign Up
+        </button>
+        <p class="bg-light fs-5 text-muted" *ngIf="showMessage">
+        {{regProcessMessage}}  <span class="spinner-grow spinner-grow-sm text-danger" role="status" aria-hidden="true"></span>
+      </p>
+      </div>
+    </div>
+  </form>
+</div>

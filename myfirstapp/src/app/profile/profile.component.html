@@ -1,0 +1,71 @@
+<app-home></app-home>
+<div class="row">
+    <div class="col-6"  >
+      <div class="myContainer">
+        <div class="model">
+          <h3>User Profile</h3>
+          <figure class="figure">
+            <img src="https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png" class="figure-img img-fluid rounded" alt="icon" height="10%" width="200">
+          </figure>
+          <div class="border-dark">
+            <p>{{email}}</p>
+            <p class="h3">{{userName}}</p>
+            <p class="h3">{{firstname}}</p>
+            
+          </div>
+          <button class="btn btn-danger" (click)="editProfile=true">Edit Profile</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="myContainer" *ngIf="editProfile">
+        <div class="model">
+          <h3>Update user</h3>
+          <form class="row row-cols-sm-auto g-3 align-items-center">
+            <div class="col-6">
+              <div class="input-group">
+                <div class="input-group-text">First  Name</div>
+                <input type="text" [(ngModel)]="firstname" class="form-control"  placeholder="First Name" name="firstname">
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="input-group">
+                <div class="input-group-text">User Name </div>
+                <input type="text" [(ngModel)]="userName"  class="form-control" name="usrName" id="Username" placeholder="Choose a username">
+              </div>
+            </div>
+  
+            <div class="col-12">
+              <div class="input-group">
+                <div class="input-group-text">Your Email</div>
+                <input type="email" [(ngModel)]="email" (keyup)="checkUserAvl($event)" class="form-control" name="email" placeholder="Enter your email">
+              </div>
+            </div>
+  
+            <div class="col-12">
+              <div class="input-group">
+                <div class="input-group-text">Password</div>
+                <input type="password" [(ngModel)]="password" class="form-control" name="password" placeholder="Enter a strong password">
+              </div>
+            </div>
+  
+  
+            <div class="col-6">
+              <button type="button" class="btn btn-success" [ngClass]="{disabled:disableUpdate}" (click)="saveProfileData()">Update User</button>
+            </div>
+            <div class="col-6 fs-4" >
+              <p class="bg-light fs-5 text-muted" *ngIf="showMessage">
+                {{logProcessMessage}}  <span class="spinner-grow spinner-grow-sm text-danger" role="status" aria-hidden="true"></span>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row ">
+    <p class="bg-light fs-5 text-muted ms-5 text-center" *ngIf="showMessage">
+      Loading Profile  <span class="spinner-grow spinner-grow-sm text-danger" role="status" aria-hidden="true"></span>
+    </p>
+  </div>

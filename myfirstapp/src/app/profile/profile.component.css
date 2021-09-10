@@ -1,0 +1,67 @@
+#profileCard{
+    min-height: 200px;
+    max-width: 300px;
+    margin: auto;
+    border: 3px solid gray;
+    padding: 2px;
+    border-radius: 5px;
+  }
+  #proName{
+    color: rgb(50, 61, 50);
+    font-size: x-large;
+  }
+  #proDet{
+    height: fit-content;
+    color: #dac1c1;
+  }
+  input{
+    outline: none;
+  
+  }
+  button{
+    outline: none;
+  }
+  
+  .model{
+    height: fit-content;
+    width: 80%;
+    padding: 0.5rem;
+    border-radius: 10px;
+    border: 1px solid #e04848;
+    background: #78c4e2;
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 8%;
+  }
+  .myContainer{
+    display: grid;
+    place-items: center;
+    background: transparent;
+    width: 50%;
+    height: 100%;
+  }
+
+  .container{
+    margin-top: 20px;
+    width: 500px;
+    height: 200px;
+    background-color: rgb(38, 216, 83);
+    border: 2px solid rgb(168, 149, 149);
+    padding: 20px;
+    justify-content: center;
+}
+li{
+    padding: 0px 40px;
+    font-size: 20px;
+}
+.container1{
+    background-color: rgb(201, 183, 183);
+    padding: 34px;
+    
+    border: 2px solid red;
+    width: 100%;
+    border-radius: 10px;
+
+
+
+}
