@@ -339,7 +339,7 @@ exports.updateResume = async function (req, res) {
   } catch (err) {
     return res.status(404).json({
       status: false,
-      message: "Error in Jwt tocken",
+      message: "Error in Jwt token",
     });
   }
 };
@@ -369,6 +369,7 @@ exports.newResume = function (req, res) {
       .then((data) => {
         console.log(data);
         res.status(201).json(data);
+        console.log("data is saved");
       })
       .catch((err) => {
         console.log(err);
@@ -377,7 +378,7 @@ exports.newResume = function (req, res) {
   } catch (err) {
     return res.status(404).json({
       status: false,
-      message: "Error in Jwt tocken",
+      message: "Error in Jwt token",
     });
   }
 };

@@ -12,13 +12,13 @@ import { DataService } from 'src/app/service/data.service';
 export class FormComponent implements OnInit {
   private editSubs!: Subscription;
   isLinear = false;
- 
-  
-  
+
+
+
 
   constructor(private fb: FormBuilder, private dataservice: DataService) {
-    
-   }
+
+  }
 
   ngOnInit(): void {
 
@@ -29,7 +29,7 @@ export class FormComponent implements OnInit {
       console.log('Load edit from req rec for: ' + data);
       this.loadResumeData(data);
     });
-    
+
     this.dataservice.previewResumeSelect.subscribe((data) => {
       this.showForm = false;
     });
@@ -42,7 +42,7 @@ export class FormComponent implements OnInit {
   }
 
   @Output() sendFormResume = new EventEmitter<any>();
-  
+
 
   loadResumeData(id: any) {
     this.currentResumeID = id;
@@ -68,8 +68,8 @@ export class FormComponent implements OnInit {
 
 
   myform!: FormGroup;
-  showLoadMessage: boolean =false;
-  showForm: boolean=false;
+  showLoadMessage: boolean = false;
+  showForm: boolean = false;
   currentResumeID!: string;
   loadMessage: String = 'Fetching Loaded data...';
 
@@ -82,16 +82,16 @@ export class FormComponent implements OnInit {
     this.myform.reset();
   }
 
-  createNewForm(){
+  createNewForm() {
     this.currentResumeID = '';
-    console.log('New form creating'); 
+    console.log('New form creating');
     this.myform = new FormGroup({
       'userdata': new FormGroup({
         'fname': new FormControl(null, Validators.required),
         'lname': new FormControl(null, Validators.required),
         'email': new FormControl(null, [Validators.required, Validators.email]),
         'Address': new FormControl(null),
-        'Phone' : new FormControl(null),
+        'Phone': new FormControl(null),
         'Profession': new FormControl(null),
 
 
@@ -100,12 +100,12 @@ export class FormComponent implements OnInit {
       'experience': new FormArray([]),
       'skill': new FormArray([]),
       'education': new FormArray([])
-    
+
 
     });
   }
 
- 
+
 
 
   editResume(formData: any) {
@@ -138,7 +138,7 @@ export class FormComponent implements OnInit {
     //   ?.setValue(tempBasicD.pinCode);
 
 
-    
+
     //adding the education
 
     (<FormArray>this.myform.get('education')).clear(); //removing all controls
@@ -211,7 +211,7 @@ export class FormComponent implements OnInit {
     // }
     // this.showLoadMessage = false;
 
-   
+
   }
 
 
@@ -235,6 +235,7 @@ export class FormComponent implements OnInit {
     // this.disableSubmit = true;
     console.log('Saving form DATA');
     let finalData = this.myform.value;
+    console.log("my final data");
     // finalData['hobbies'] = this.getHobbiesArray();
     console.log(finalData);
     this.dataservice.addResume(finalData).subscribe((respo: any) => {
@@ -244,9 +245,11 @@ export class FormComponent implements OnInit {
       console.log('emitting to refrest available resume');
       this.dataservice.refreshResume.emit('refresh Resume');
     });
-    console.log("hello");
+    console.log("data is:");
     console.log(finalData);
   }
+
+
 
   deleteResume() {
     console.log('Current resume ID [delete]: ' + this.currentResumeID);
@@ -257,7 +260,7 @@ export class FormComponent implements OnInit {
       this.showForm = false;
     });
   }
-  downloadResume() {}
+  downloadResume() { }
 
 
   resetFormResume() {
@@ -331,7 +334,7 @@ export class FormComponent implements OnInit {
   }
 
 
-  
+
 }
 
 

@@ -57,6 +57,7 @@ export class DisplayComponent implements OnInit {
 
       this.dataservice.templateSelect.subscribe((data) => {
         console.log('Change template request');
+        console.log(data);
         console.log(data.resumeID);
         console.log(this.inpResumeData);
         //if we have a resume and that is the currently selected one then, no need to refresh data
@@ -67,7 +68,7 @@ export class DisplayComponent implements OnInit {
           console.log('Resume data no available loadin and then showing');
           this.showLoadMessage = true;
 
-          this.dataservice.getOneCV(data.resumeID).subscribe(
+          this.dataservice.getOneCV(data.email).subscribe(
             (resp: any) => {
               console.log('Data recieved to display');
               console.log(resp);
@@ -83,6 +84,30 @@ export class DisplayComponent implements OnInit {
         }
       });
   }
+
+
+  // function http call 
+  // click listener
+  // api in Backend
+
+
+//   this.dataservice.seeresume.subscribe((data)=>{
+//     console.log("data received");
+//     this.dataservice.getOneCV(data.resumeID).subscribe((resp: any) => {
+//       console.log('Data recieved to display');
+//       console.log(resp);
+//       this.inpResumeData = resp.body;
+//       this.showLoadMessage = false;
+//       this.showResume = true;
+//       this.showTemplateResume(data.componentIndex.component);
+//     },
+//     (error) => {
+//       console.log('Error retrieving data');
+//     }
+//   );
+// }
+// });
+// }
 
 
   

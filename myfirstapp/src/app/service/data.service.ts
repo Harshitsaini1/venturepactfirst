@@ -19,6 +19,7 @@ export class DataService {
   templateSelect: Subject<any> = new Subject<any>();
   closeForm: Subject<any> = new Subject<any>();
   templatesShow: Subject<any> = new Subject<any>();
+  seeresume:Subject<any> =new Subject<any>();
 
   dataChannel = new Subject();
 
@@ -185,10 +186,7 @@ export class DataService {
   showProgress(message: any) {
     console.log('Data mes: ' + message);
   }
-  // handleError(apple: any) {
-  //   console.log('Eror');
-  //   console.log(apple);
-  // }
+ 
 
   // //used in operators rxjs
   // printEle(data: any, container: string) {

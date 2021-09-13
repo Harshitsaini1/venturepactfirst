@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
       console.log('Setting auth key in Local storage');
       // console.log(localStorage.getItem('auth'));
       this.dataservice.userStatus.emit(true);
-      this.router.navigate(['/profile']);
+      this.router.navigate(['']);
     },
     error: (err) => {
       this.logProcessMessage = 'Error Logging user !';
