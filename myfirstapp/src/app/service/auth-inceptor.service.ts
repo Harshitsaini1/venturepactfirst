@@ -9,7 +9,7 @@ import {
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
-export class InterceptorService implements HttpInterceptor {
+export class AuthInceptorService implements HttpInterceptor {
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
@@ -21,6 +21,8 @@ export class InterceptorService implements HttpInterceptor {
         localStorage.getItem('auth') || ''
       ),
     });
+    console.log("inceptor running");
+    console.log(localStorage.getItem('auth'));
     return next.handle(modifiedUrl).pipe(
       tap((event) => {
         console.info(event);

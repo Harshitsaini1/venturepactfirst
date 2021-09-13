@@ -17,6 +17,8 @@ const ngCV = require("./modules/resumeschema")
 const { error } = require("console");
 const { ConnectionStates } = require("mongoose");
 
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -26,7 +28,7 @@ app.use(function (req, res, next) {
     res.setHeader(
         "Access-Control-Allow-Headers",
 
-        "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, authentication"
+        "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, authorization"
     );
     next();
 });

@@ -11,8 +11,6 @@ import { DataService } from 'src/app/service/data.service';
 })
 export class FormComponent implements OnInit {
   private editSubs!: Subscription;
-  // firstFormGroup!: FormGroup;
-  // secondFormGroup!: FormGroup;
   isLinear = false;
  
   
@@ -31,12 +29,7 @@ export class FormComponent implements OnInit {
       console.log('Load edit from req rec for: ' + data);
       this.loadResumeData(data);
     });
-    // this.firstFormGroup = this._formBuilder.group({
-    //   firstCtrl: ['', Validators.required],
-    // });
-    // this.secondFormGroup = this._formBuilder.group({
-    //   secondCtrl: ['', Validators.required],
-    // });
+    
     this.dataservice.previewResumeSelect.subscribe((data) => {
       this.showForm = false;
     });
@@ -49,9 +42,7 @@ export class FormComponent implements OnInit {
   }
 
   @Output() sendFormResume = new EventEmitter<any>();
-  ////////////    FormGroups for dynamic froms    ///////////////////
-
-  //listening to edit request emit
+  
 
   loadResumeData(id: any) {
     this.currentResumeID = id;
@@ -93,7 +84,7 @@ export class FormComponent implements OnInit {
 
   createNewForm(){
     this.currentResumeID = '';
-    console.log('New form creating'); //hobbies is added through the chips;
+    console.log('New form creating'); 
     this.myform = new FormGroup({
       'userdata': new FormGroup({
         'fname': new FormControl(null, Validators.required),
@@ -253,6 +244,7 @@ export class FormComponent implements OnInit {
       console.log('emitting to refrest available resume');
       this.dataservice.refreshResume.emit('refresh Resume');
     });
+    console.log("hello");
     console.log(finalData);
   }
 
@@ -286,7 +278,7 @@ export class FormComponent implements OnInit {
   onaddproj() {
     const nayaProject = new FormGroup({
       pname: new FormControl(null),
-      Detail: new FormControl(null),
+      Description: new FormControl(null),
     });
     (<FormArray>this.myform.get('project')).push(nayaProject);
   }
@@ -337,6 +329,9 @@ export class FormComponent implements OnInit {
   onSubmit() {
     console.log(this.myform);
   }
+
+
+  
 }
 
 

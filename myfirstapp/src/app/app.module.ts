@@ -6,11 +6,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule, routingComponents  } from './app-routing.module';
 import { AppComponent } from './app.component';
 // import { HomeComponent } from './home/home.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ResumeComponent } from './resume/resume.component';
 import { FormComponent } from './resume/form/form.component';
 import { DisplayComponent } from './resume/display/display.component';
 import { PlaceholderDirectiveDirective } from './placeholder-directive.directive';
+import { AuthInceptorService } from './service/auth-inceptor.service';
 
 
 
@@ -43,8 +44,17 @@ import { PlaceholderDirectiveDirective } from './placeholder-directive.directive
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    
    
   
+  ],
+  providers:[
+    
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInceptorService,
+      multi: true,
+    },
   ],
 
   bootstrap: [AppComponent]

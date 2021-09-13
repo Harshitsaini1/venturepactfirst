@@ -62,7 +62,7 @@ export class DisplayComponent implements OnInit {
         //if we have a resume and that is the currently selected one then, no need to refresh data
         if (this.inpResumeData && data.resumeID === this.inpResumeData._id) {
           console.log('Data resume available');
-          // this.showTemplateResume(data.componentIndex.component);
+          this.showTemplateResume(data.componentIndex.component);
         } else {
           console.log('Resume data no available loadin and then showing');
           this.showLoadMessage = true;
@@ -74,7 +74,7 @@ export class DisplayComponent implements OnInit {
               this.inpResumeData = resp.body;
               this.showLoadMessage = false;
               this.showResume = true;
-              // this.showTemplateResume(data.componentIndex.component);
+              this.showTemplateResume(data.componentIndex.component);
             },
             (error) => {
               console.log('Error retrieving data');
@@ -84,6 +84,8 @@ export class DisplayComponent implements OnInit {
       });
   }
 
+
+  
 
 
   closeResume() {
@@ -107,15 +109,15 @@ resumeDesignPrev!: PlaceholderDirectiveDirective;
 showTemplateResume(comp: any) {
   console.log('Show template design');
   this.showResume = false;
-  const componentFactory = this.compFacRes.resolveComponentFactory(comp);
+  // const componentFactory = this.compFacRes.resolveComponentFactory(comp);
 
-const viewContainerRef = this.resumeDesignPrev.viewContRef;
-viewContainerRef.clear();
+// const viewContainerRef = this.resumeDesignPrev.viewContRef;
+// viewContainerRef.clear();
 
-const componentRef =
-  viewContainerRef.createComponent<typeof comp>(componentFactory);
-console.log('added the resume data to new template');
-componentRef.instance.inpResumeData = this.inpResumeData;
+// const componentRef =
+//   viewContainerRef.createComponent<typeof comp>(componentFactory);
+// console.log('added the resume data to new template');
+// componentRef.instance.inpResumeData = this.inpResumeData;
   }
 //   to create different resume template preview, we will use the component factory
 //   one will be default template, other will be preview templates

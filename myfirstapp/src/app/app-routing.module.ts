@@ -15,11 +15,7 @@ const routes: Routes = [
   { path: 'login',  component: LoginComponent},
   { path: 'profile',  component: ProfileComponent},
   {path: 'resume', component: ResumeComponent},
-  {path: 'display', component: DisplayComponent}
   
-  
-  
- 
 
 ];
 

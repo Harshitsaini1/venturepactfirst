@@ -2,14 +2,14 @@ var mongoose = require("mongoose");
 
 var resumeSchema = mongoose.Schema(
   {
-    email:{type:String, required: true},
+    // email:{type:String, required: true},
     userdata: {
       fname: { type: String },   
       lname: { type: String },  
-      Address: { type: String },
-      email: { type: String },
       Profession:{type:String},
+      email: { type: String },    
       Phone:{type:String},
+      Address: { type: String },
     },
     education: [
       {
@@ -29,13 +29,13 @@ var resumeSchema = mongoose.Schema(
     project: [
       {
         pname: { type: String },
-        Detail: [{ type: String }],
+        Description: [{ type: String }],
       },
     ],
    
     skills: [
       {
-        skills: { type: String },
+        Skills: { type: String },
       },
     ],
     //end of schema

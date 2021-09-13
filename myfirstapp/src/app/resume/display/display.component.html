@@ -37,11 +37,11 @@
           <div class="col col-8">
             <p *ngFor="let skill of inpResumeData.skill">{{skill.name}}</p>
           </div>
-          <div class="col col-4">
+          <!-- <div class="col col-4">
             <div class="progress" *ngFor="let skill of inpResumeData.skill" style="margin-bottom: 20px">
-              <!-- <div class="progress-bar bg-info" role="progressbar" style="width:{{skill.level*20}}%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">{{skill.level}}</div> -->
-            <!-- </div> -->
-          </div>
+              <div class="progress-bar bg-info" role="progressbar" style="width:{{skill.level*20}}%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">{{skill.level}}</div>
+             </div>
+          </div> -->
         </div>
       </div>
 
@@ -52,9 +52,9 @@
             {{job.startDate | date:'mediumDate'}} to {{job.endDate | date:'mediumDate'}}
           </div> -->
           <div class="col col-8">
-            <h3 >{{job.role}} @ {{job.cname}}}</h3>
+            <h3 >{{job.Role}} @ {{job.Cname}}}</h3>
             <ul>
-              <li *ngFor="let desc of job.description">{{desc}}</li>
+              <li *ngFor="let desc of job.Description">{{desc}}</li>
             </ul>
           </div>
         </div>
@@ -66,8 +66,9 @@
           {{edu.startDate | date:'mediumDate'}} to {{edu.endDate | date:'mediumDate'}}
         </div> -->
         <div class="col col-8">
-          <h3>{{edu.school}}</h3>
-          <p class="display-5">{{edu.degree}} </p>
+          <h3>{{edu.School}}</h3>
+          <p class="display-5">{{edu.Degree}} </p>
+          <p class="display-5">{{edu.CGPA}} </p>
         </div>
       </div>
 
