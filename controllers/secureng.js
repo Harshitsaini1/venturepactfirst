@@ -300,6 +300,7 @@ exports.getCVdet = async function (req, res) {
   }
 };
 
+
 exports.getOneCV = async function (req, res) {
   if (req.headers["authorization"] === undefined) {
     return res.status(404).json({

@@ -85,13 +85,14 @@ export class DataService {
   }
   getOneCV(id: any) {
     return this.http.post(
-      this.ROOT_URL + '/resume',
+      this.ROOT_URL + '/cvSingle',
       { _id: id },
       {
         observe: 'response' as 'body',
       }
     );
   }
+
   updateResume(data: any, curId: any) {
     return this.http.post(
       this.ROOT_URL + '/updateResume',

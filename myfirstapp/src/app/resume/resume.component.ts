@@ -56,47 +56,5 @@ export class ResumeComponent implements OnInit {
     this.dataservice.refreshResume.unsubscribe();
   }
 
-  // //for resume template change
-  // templates: templates[] = [
-  //   {
-  //     name: 'First',
-  //     loc: 'assets/images/tmp_01.png',
-  //     component: Template1Component,
-  //   },
-  //   {
-  //     name: 'second',
-  //     loc: 'assets/images/tmp_02.png',
-  //     component: Template2Component,
-  //   },
-  //   {
-  //     name: 'third',
-  //     loc: 'assets/images/tmp_03.png',
-  //     component: Template1Component,
-  //   },
-  // ];
-
-  //   showTemplates: boolean = false;
-
-  //   templateChange(meta: string) {
-  //     this.selectedResume = meta;
-  //     this.showTemplates = true;
-  //     console.log('Change resume Design: ' + meta);
-  //     this.dataServ.closeForm.next(false);
-  //   }
-  //   // public component: Type<any>
-
-  //   showSelectedDesign(index: number) {
-  //     console.log('Showing selected resume: ' + index);
-  //     this.dataServ.templateSelect.next({
-  //       resumeID: this.selectedResume,
-  //       componentIndex: this.templates[index],
-  //     });
-  //   }
-  // }
-  // interface templates {
-  //   name: string;
-  //   loc: string;
-  //   component: Type<any>;
-  // }
-
+  
 }

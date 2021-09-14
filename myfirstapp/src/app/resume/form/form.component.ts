@@ -12,10 +12,6 @@ import { DataService } from 'src/app/service/data.service';
 export class FormComponent implements OnInit {
   private editSubs!: Subscription;
   isLinear = false;
-
-
-
-
   constructor(private fb: FormBuilder, private dataservice: DataService) {
 
   }
@@ -33,9 +29,9 @@ export class FormComponent implements OnInit {
     this.dataservice.previewResumeSelect.subscribe((data) => {
       this.showForm = false;
     });
-    this.dataservice.templateSelect.subscribe((data) => {
-      this.showForm = false;
-    });
+    // this.dataservice.templateSelect.subscribe((data) => {
+    //   this.showForm = false;
+    // });
     this.dataservice.closeForm.subscribe(() => {
       this.showForm = false;
     });

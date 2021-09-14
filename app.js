@@ -18,6 +18,7 @@ const { error } = require("console");
 const { ConnectionStates } = require("mongoose");
 
 
+app.use(express.static(process.cwd() + "/app-first/dist/app-first/"));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -32,6 +33,7 @@ app.use(function (req, res, next) {
     );
     next();
 });
+
 
 
 app.use('/api', apiRoute);
@@ -116,6 +118,12 @@ app.use('/api', apiRoute);
 // app.get("/register", (req, res) => {
 //     res.send("register");
 // })
+
+
+app.get("*", (req, res) => {
+    console.log("Main route Trig");
+    res.sendFile(process.cwd() + "/app-first/dist/app-first/index.html");
+  });
 
 
 app.listen(port, () => {
