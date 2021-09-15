@@ -39,6 +39,19 @@ app.use(function (req, res, next) {
 app.use('/api', apiRoute);
 
 
+app.get("*", (req, res) => {
+    console.log("Main route");
+    res.sendFile(process.cwd() + "myfirstapp/dist/myfisrtapp/index.html");
+  });
+
+
+app.listen(port, () => {
+    console.log(`server is running at port no ${port}`);
+});
+
+
+
+
 
 
 
@@ -118,18 +131,5 @@ app.use('/api', apiRoute);
 // app.get("/register", (req, res) => {
 //     res.send("register");
 // })
-
-
-app.get("*", (req, res) => {
-    console.log("Main route");
-    res.sendFile(process.cwd() + "myfirstapp/dist/myfisrtapp/index.html");
-  });
-
-
-app.listen(port, () => {
-    console.log(`server is running at port no ${port}`);
-});
-
-
 
 
