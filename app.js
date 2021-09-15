@@ -18,7 +18,7 @@ const { error } = require("console");
 const { ConnectionStates } = require("mongoose");
 
 
-app.use(express.static(process.cwd() + "myfirstapp/src/index.html"));
+app.use(express.static(process.cwd() + "myfirstapp/dist/myfisrtapp"));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -122,7 +122,7 @@ app.use('/api', apiRoute);
 
 app.get("*", (req, res) => {
     console.log("Main route Trig");
-    res.sendFile(process.cwd() + "/app-first/dist/app-first/index.html");
+    res.sendFile(process.cwd() + "proj1/myfirstapp/src/index.html");
   });
 
 
