@@ -18,7 +18,7 @@ const { error } = require("console");
 const { ConnectionStates } = require("mongoose");
 
 
-app.use(express.static(process.cwd() + "myfirstapp\src\index.html"));
+app.use(express.static(process.cwd() + "myfirstapp/src/index.html"));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
