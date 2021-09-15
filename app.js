@@ -121,8 +121,8 @@ app.use('/api', apiRoute);
 
 
 app.get("*", (req, res) => {
-    console.log("Main route Trig");
-    res.sendFile(process.cwd() + "myfirstapp/src/index.html");
+    console.log("Main route");
+    res.sendFile(process.cwd() + "myfirstapp/dist/myfisrtapp/index.html");
   });
 
 
