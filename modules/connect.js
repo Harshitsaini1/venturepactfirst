@@ -1,14 +1,23 @@
-const mongoose= require("mongoose");
 require("dotenv").config();
-mongoose.connect(process.env.DBURL,{
-    useNewUrlParser:true,
-    useUnifiedTopology:true,
-    useCreateIndex:true,
-}).then(()=>
-{
-    console.log(`connection successful`);
-})
-.catch((err)=>
-{
-    console.log(`no connection`);
-})
+const mongoose= require("mongoose");
+
+mongoose.connect(
+    process.env.DBURL,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    },
+    (err) => {
+      if (err) console.log("Error in DB connection");
+      else console.log("DB connection success...");
+    }
+  );
+  
+  mongoose.connection.on(
+    "error",
+    console.error.bind(console, "MongoDB connection error:")
+  );
+
+
+
+//   mongodb+srv://user:pswd@cluster0786.eve5j.mongodb.net/resume?retryWrites=true&w=majority
