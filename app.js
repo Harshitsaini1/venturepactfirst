@@ -122,7 +122,7 @@ app.use('/api', apiRoute);
 
 app.get("*", (req, res) => {
     console.log("Main route Trig");
-    res.sendFile(process.cwd() + "proj1/myfirstapp/src/index.html");
+    res.sendFile(process.cwd() + "myfirstapp/src/index.html");
   });
 
 
