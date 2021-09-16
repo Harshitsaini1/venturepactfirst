@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
       console.log(data.body.jwt);
       console.log(" data received login");
       this.dataservice.JWT_TOKEN = data.body.jwt;
-      this.logProcessMessage = 'User Logged in, Redirect profile :-)';
+     
    
 
       localStorage.setItem('auth', JSON.stringify(data.body.jwt));

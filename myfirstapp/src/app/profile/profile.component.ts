@@ -7,7 +7,6 @@ import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-profile',
-
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css'],
   providers:[]
@@ -25,7 +24,7 @@ export class ProfileComponent implements OnInit,OnChanges,CanComponentDeactivate
         next: (data: any) => {
           console.log("data recieved Profile")
           if (data.body.status==404){
-            router.navigate(['/login'])
+            router.navigate([''])
             return;
           }
           console.log(data.body);
@@ -60,7 +59,7 @@ export class ProfileComponent implements OnInit,OnChanges,CanComponentDeactivate
   saveProfileData(){
     this.disableUpdate=true;
     this.showMessage=true;
-    this.logProcessMessage="Updating Profile, wait";
+    this.logProcessMessage="Updating Profile....";
     console.log("Updating user data");
     if (this.password===""){
       this.logProcessMessage="Password blank";
@@ -78,7 +77,7 @@ export class ProfileComponent implements OnInit,OnChanges,CanComponentDeactivate
         next:(data:any)=>{
           console.log("data recieved REGISTER")
           console.log(data)
-          this.logProcessMessage="Profile Updated 😄";
+          this.logProcessMessage="Profile Updated";
           this.disableUpdate=false;
           this.dataSaved=true;
           localStorage.setItem('auth',JSON.stringify(data.body.jwt))
@@ -88,7 +87,7 @@ export class ProfileComponent implements OnInit,OnChanges,CanComponentDeactivate
         },
         error:err => {
           console.log(err)
-          this.logProcessMessage='Error Updating user 😔'
+          this.logProcessMessage='Error Updating user'
           console.log('error occured in Regsitering User')
         }
       })
@@ -111,12 +110,12 @@ export class ProfileComponent implements OnInit,OnChanges,CanComponentDeactivate
           if (data.body.availableUser){
             this.disableUpdate=false;
             console.log('Email available for use')
-            this.logProcessMessage="Email Available 😄";
+            this.logProcessMessage="Email Available ";
           }
           else {
             this.disableUpdate=true;
             console.log('Email NOT available for use')
-            this.logProcessMessage="Email NOT Available 😔";
+            this.logProcessMessage="Email NOT Available ";
           }
         },
         error:err => {

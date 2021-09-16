@@ -20,4 +20,3 @@ mongoose.connect(
 
 
 
-//   mongodb+srv://user:pswd@cluster0786.eve5j.mongodb.net/resume?retryWrites=true&w=majority
