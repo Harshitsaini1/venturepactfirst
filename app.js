@@ -23,15 +23,12 @@ app.use(express.static(process.cwd() + "/myfirstapp/dist/myfisrtapp"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(function (req, res, next) {
-    res.setHeader("Access-Control-Allow-Origin", "https://harshfirst.herokuapp.com"); // update to match the domain you will make the request from
-    res.setHeader("Access-Control-Allow-Credentials", "true");
-    res.setHeader(
-        "Access-Control-Allow-Headers",
-        "Access-Control-Allow-Origin",
 
-        "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, XMLHttpRequest, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, authorization"
-    );
+app.use(function (req, res, next) {
+    res.setHeader("Access-Control-Allow-Origin", "https://harshfirst.herokuapp.com");
+    res.setHeader("Access-Control-Allow-Credentials", "true");
+    res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+    res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, authorization");
     next();
 });
 
