@@ -24,7 +24,7 @@ export class DataService {
   dataChannel = new Subject();
 
   constructor(private http: HttpClient) {
-    this.ROOT_URL = "http://localhost:3000/api";
+    this.ROOT_URL = "/api";
     console.log(this.ROOT_URL);
 
 
