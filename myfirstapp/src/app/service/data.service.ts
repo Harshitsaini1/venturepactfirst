@@ -19,7 +19,7 @@ export class DataService {
   templateSelect: Subject<any> = new Subject<any>();
   closeForm: Subject<any> = new Subject<any>();
   templatesShow: Subject<any> = new Subject<any>();
-  seeresume:Subject<any> =new Subject<any>();
+  ShowResume:Subject<any> =new Subject<any>();
 
   dataChannel = new Subject();
 
