@@ -22,14 +22,14 @@ export class AppComponent {
     console.log('User auth key: ' + localStorage.getItem('auth'));
     console.log(this.router.url);
 
-    // if (localStorage.getItem('auth')) {
-    //   this.dataService.isLogged = true;
-    //   this.router.navigate(['/profile']);
-    //   // this.router.navigate(['/resume']);
-    // } else {
-    //   this.dataService.isLogged = false;
-    //   this.router.navigate(['/login']);
-    // }
+    if (localStorage.getItem('auth')) {
+      this.dataService.isLogged = true;
+      this.router.navigate(['/profile']);
+      // this.router.navigate(['/resume']);
+    } else {
+      this.dataService.isLogged = false;
+      this.router.navigate(['/login']);
+    }
     this.dataService.dataChannel.subscribe((data: any) => {
       console.log('Data recieved form next');
       console.log(data);
