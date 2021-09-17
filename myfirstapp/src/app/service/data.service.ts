@@ -24,14 +24,14 @@ export class DataService {
   dataChannel = new Subject();
 
   constructor(private http: HttpClient) {
-    this.ROOT_URL = "/api";
+    this.ROOT_URL = "api";
     console.log(this.ROOT_URL);
 
     console.log('User auth key: ' + localStorage.getItem('auth'));
     if (localStorage.getItem('auth')) this.isLogged = true;
     else this.isLogged = false;
 
-    
+
     this.userStatus.subscribe((status: boolean) => {
       this.isLogged = status;
     });
