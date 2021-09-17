@@ -37,7 +37,7 @@ export class ProfileComponent implements OnInit,OnChanges,CanComponentDeactivate
           console.log(err)
           console.log('error occured in Profile User');
           localStorage.clear();
-          router.navigate(['/login']);
+          router.navigate(['']);
         }
       })
   }

@@ -232,7 +232,7 @@ exports.updateProfile = function (req, res) {
               )
               .then((dta) => {
                 console.log(dta);
-                //now we need to set new cookie and new auth key, bcoz user name is changed
+                
                 jwt.sign(
                   { userId: req.body.email },
                   "mysecretKey",

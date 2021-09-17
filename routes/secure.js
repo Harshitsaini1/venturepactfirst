@@ -21,8 +21,7 @@ router.post("/update", secureController.updateProfile);
 
 
 
-
-
+// ------------------------------------resume---------------------------------------------------------
 router.get("/cvinfo", secureController.getCVdet);
 router.post("/cvSingle", secureController.getOneCV);
 router.post("/updateResume", secureController.updateResume);

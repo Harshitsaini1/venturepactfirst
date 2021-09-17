@@ -29,9 +29,9 @@ export class FormComponent implements OnInit {
     this.dataservice.previewResumeSelect.subscribe((data) => {
       this.showForm = false;
     });
-    // this.dataservice.templateSelect.subscribe((data) => {
-    //   this.showForm = false;
-    // });
+    this.dataservice.templateSelect.subscribe((data) => {
+      this.showForm = false;
+    });
     this.dataservice.closeForm.subscribe(() => {
       this.showForm = false;
     });
@@ -51,7 +51,7 @@ export class FormComponent implements OnInit {
         console.log(data);
         //here we will open the resume
         this.showForm = true;
-        console.log('Opening from for edit');
+        console.log('Opening form for edit');
         this.showLoadMessage = false;
         this.editResume(data.body);
       },
@@ -263,7 +263,6 @@ export class FormComponent implements OnInit {
     console.log('resetting form data');
     this.myform.reset();
   }
-
   //adding sub components of a block
 
   onaddskill() {
