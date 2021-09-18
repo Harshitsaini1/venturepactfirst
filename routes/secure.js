@@ -17,6 +17,7 @@ router.post("/login", secureController.loginUser);
 router.get("/checkUserId/:uid", secureController.checkUserName);
 router.get("/profile", secureController.profile);
 router.post("/update", secureController.updateProfile);
+router.get("/getResume", secureController.ResumeData);
 
 
 
@@ -82,8 +83,4 @@ router.get("/getCookie", (req, res) => {
 //       console.log(e);
 //     }
 //   });
-
-
-
-
 module.exports = router;

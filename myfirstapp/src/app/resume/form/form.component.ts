@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/service/data.service';
 
@@ -10,22 +11,36 @@ import { DataService } from 'src/app/service/data.service';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
-  private editSubs!: Subscription;
   isLinear = false;
-  constructor(private fb: FormBuilder, private dataservice: DataService) {
+  constructor(private dataservice: DataService, private router:Router) {
 
   }
 
-  ngOnInit(): void {
+  
 
+  myform!: FormGroup;
+  showLoadMessage: boolean = false;
+  showForm: boolean = false;
+  currentResumeID!: string;
+  loadMessage: String = 'Fetching Loaded data...';
+
+  disableSubmit: boolean = false;
+  clickShowForm() {
+    this.showForm = true;
+    this.dataservice.templatesShow.next(false);
+    this.myform.reset();
+  }
+
+  
+
+  ngOnInit(): void {
     console.log('Form data comp loaded');
     this.createNewForm();
-
-    this.editSubs = this.dataservice.editResumeSelect.subscribe((data: any) => {
-      console.log('Load edit from req rec for: ' + data);
-      this.loadResumeData(data);
-    });
-
+    // this.editSubs = this.dataservice.editResumeSelect.subscribe((data: any) => {
+    //   console.log('Load edit from req rec for: ' + data);
+    //   this.loadResumeData(data);
+    // });
+   
     this.dataservice.previewResumeSelect.subscribe((data) => {
       this.showForm = false;
     });
@@ -35,76 +50,117 @@ export class FormComponent implements OnInit {
     this.dataservice.closeForm.subscribe(() => {
       this.showForm = false;
     });
+  
+
+
+
+
+
+  //   this.dataservice.editResume().subscribe(
+  //     (res) => {
+  //       const exp = JSON.parse(JSON.stringify(res)).experience;
+  //       for (let i = 0; i < exp.length - 1; i++) {
+  //         this.onaddexp();
+  //       }
+
+  //       const pro = JSON.parse(JSON.stringify(res)).project;
+  //       for (let i = 0; i < pro.length - 1; i++) {
+  //         this.onaddproj();
+  //       }
+
+  //       // const cer = JSON.parse(JSON.stringify(res)).certification;
+  //       // for (let i = 0; i < cer.length - 1; i++) {
+  //       //   this.onAddCertifiction();
+  //       // }
+
+  //       const edu = JSON.parse(JSON.stringify(res)).education;
+  //       for (let i = 0; i < edu.length - 1; i++) {
+  //         this.onaddedu();
+  //       }
+
+  //       this.myform.patchValue({
+          
+  //         fname: JSON.parse(JSON.stringify(res)).userdata.fname,
+  //         lname: JSON.parse(JSON.stringify(res)).userdata.lname,
+  //         email: JSON.parse(JSON.stringify(res)).userdata.email,
+  //         Phone: JSON.parse(JSON.stringify(res)).userdata.Phone,
+  //         Address: JSON.parse(JSON.stringify(res)).userdata.Address,
+  //         Profession: JSON.parse(JSON.stringify(res)).userdata.Profession,
+  //         skills: JSON.parse(JSON.stringify(res)).skills,
+  //         // profile: JSON.parse(JSON.stringify(res)).profile,
+  //         // linkedin: JSON.parse(JSON.stringify(res)).linkedin,
+  //         // facebook: JSON.parse(JSON.stringify(res)).facebook,
+  //         // instagram: JSON.parse(JSON.stringify(res)).instagram,
+  //         // languages: JSON.parse(JSON.stringify(res)).languages,
+  //         // objective: JSON.parse(JSON.stringify(res)).objective,
+  //         experience: JSON.parse(JSON.stringify(res)).experience,
+  //         project: JSON.parse(JSON.stringify(res)).project,
+  //         // certification: JSON.parse(JSON.stringify(res)).certification,
+  //         education: JSON.parse(JSON.stringify(res)).education,
+  //       });
+  //     },
+  //     (err) => console.error(err)
+  //   );
   }
 
-  @Output() sendFormResume = new EventEmitter<any>();
+//  saving form data
+// saveResumeData() {
+//   // console.log(this.resumeForm.value);
+//   this.dataservice.setResumeData(this.myform.value).subscribe(
+//     (res) => {
+//       console.log(res);
+//       this.router.navigate(['/display']);
+//     },
+//     (err) => console.error(err)
+//   );
+// }
+
+@Output() sendFormResume = new EventEmitter<any>();
+
+loadResumeData(id: any) {
+  this.currentResumeID = id;
+
+  this.showForm = false;
+  this.showLoadMessage = true;
+  this.dataservice.getOneCV(id).subscribe(
+    (data: any) => {
+      console.log('Single CV data recieved');
+      console.log(data);
+      //here we will open the resume
+      this.showForm = true;
+      console.log('Opening from for edit');
+      this.showLoadMessage = false;
+      this.editResume(data.body);
+    },
+    (err) => {
+      console.log(err);
+    }
+  );
+}
 
 
-  loadResumeData(id: any) {
-    this.currentResumeID = id;
-
-    this.showForm = false;
-    this.showLoadMessage = true;
-    this.dataservice.getOneCV(id).subscribe(
-      (data: any) => {
-        console.log('Single CV data recieved');
-        console.log(data);
-        //here we will open the resume
-        this.showForm = true;
-        console.log('Opening form for edit');
-        this.showLoadMessage = false;
-        this.editResume(data.body);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-  }
+createNewForm() {
+  console.log('New form creating');
+  this.myform = new FormGroup({
+    'userdata': new FormGroup({
+      'fname': new FormControl(null, Validators.required),
+      'lname': new FormControl(null, Validators.required),
+      'email': new FormControl(null, [Validators.required, Validators.email]),
+      'Address': new FormControl(null),
+      'Phone': new FormControl(null),
+      'Profession': new FormControl(null),
+    }),
+    'project': new FormArray([]),
+    'experience': new FormArray([]),
+    'skill': new FormArray([]),
+    'education': new FormArray([])
 
 
-
-  myform!: FormGroup;
-  showLoadMessage: boolean = false;
-  showForm: boolean = false;
-  currentResumeID!: string;
-  loadMessage: String = 'Fetching Loaded data...';
-
-  disableSubmit: boolean = false;
+  });
+}
 
 
-  clickShowForm() {
-    this.showForm = true;
-    this.dataservice.templatesShow.next(false);
-    this.myform.reset();
-  }
-
-  createNewForm() {
-    this.currentResumeID = '';
-    console.log('New form creating');
-    this.myform = new FormGroup({
-      'userdata': new FormGroup({
-        'fname': new FormControl(null, Validators.required),
-        'lname': new FormControl(null, Validators.required),
-        'email': new FormControl(null, [Validators.required, Validators.email]),
-        'Address': new FormControl(null),
-        'Phone': new FormControl(null),
-        'Profession': new FormControl(null),
-
-
-      }),
-      'project': new FormArray([]),
-      'experience': new FormArray([]),
-      'skill': new FormArray([]),
-      'education': new FormArray([])
-
-
-    });
-  }
-
-
-
-
-  editResume(formData: any) {
+editResume(formData: any) {
     //changing basic details
     console.log('Edit form OPENED SUCCESSFULLY');
     let currentForm = this.myform;
@@ -123,12 +179,13 @@ export class FormComponent implements OnInit {
     currentForm
       .get('userdata')
       ?.get('Profession')
-      ?.setValue(tempBasicD.profession);
+      ?.setValue(tempBasicD.Profession);
     currentForm.get('userdata')?.get('email')?.setValue(tempBasicD.email);
     currentForm.get('userdata')?.get('Phone')?.setValue(tempBasicD.Phone);
+    currentForm.get('userdata')?.get('Address')?.setValue(tempBasicD.Address);
     // currentForm.get('userdata')?.get('city')?.setValue(tempBasicD.city);
     // currentForm.get('userdata')?.get('state')?.setValue(tempBasicD.state);
-    // currentForm
+    // // currentForm
     //   .get('userdata')
     //   ?.get('pinCode')
     //   ?.setValue(tempBasicD.pinCode);
@@ -142,11 +199,8 @@ export class FormComponent implements OnInit {
       (<FormArray>this.myform.get('education')).push(
         new FormGroup({
           School: new FormControl(edu.School),
-          // location: new FormControl(edu.location),
+        
           Degree: new FormControl(edu.Degree),
-          // fieldOfStudy: new FormControl(edu.fieldOfStudy),
-          // startDate: new FormControl(new Date(edu.startDate)),
-          // endDate: new FormControl(new Date(edu.endDate)),
           CGPA: new FormControl(edu.CGPA),
         })
       );
@@ -193,7 +247,7 @@ export class FormComponent implements OnInit {
     }
 
 
-    //adding the certification
+    // adding the certification
     // (<FormArray>this.myform.get('certification')).clear(); //removing all controls
     // for (let cert of formData.certification) {
     //   (<FormArray>this.myform.get('certification')).push(
@@ -205,7 +259,7 @@ export class FormComponent implements OnInit {
     //     })
     //   );
     // }
-    // this.showLoadMessage = false;
+    this.showLoadMessage = false;
 
 
   }
@@ -226,8 +280,8 @@ export class FormComponent implements OnInit {
       });
   }
 
-  //saving form data
-  saveResumeDate() {
+  // saving form data
+  saveResumeData() {
     // this.disableSubmit = true;
     console.log('Saving form DATA');
     let finalData = this.myform.value;
@@ -240,9 +294,14 @@ export class FormComponent implements OnInit {
       console.log(respo);
       console.log('emitting to refrest available resume');
       this.dataservice.refreshResume.emit('refresh Resume');
+     
+      this.router.navigate(['/display']);
     });
     console.log("data is:");
     console.log(finalData);
+    
+    
+    
   }
 
 
@@ -267,8 +326,7 @@ export class FormComponent implements OnInit {
 
   onaddskill() {
     const nayaSkill = new FormGroup({
-      Skills: new FormControl(null),
-
+      Skills: new FormControl(null)
     });
     (<FormArray>this.myform.get('skill')).push(nayaSkill);
   }
@@ -293,7 +351,6 @@ export class FormComponent implements OnInit {
   onaddedu() {
     const nayaEdu = new FormGroup({
       School: new FormControl(null),
-
       Degree: new FormControl(null),
       CGPA: new FormControl(null),
     });
@@ -327,8 +384,6 @@ export class FormComponent implements OnInit {
   onSubmit() {
     console.log(this.myform);
   }
-
-
 
 }
 

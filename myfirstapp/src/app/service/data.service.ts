@@ -76,7 +76,28 @@ export class DataService {
     });
   }
 
-  // CV ASSIGNENT-----------------------------------------------------------------------------------------------
+  // CV ASSIGNENT -----------------------------------------------------------------------------------------------
+
+getData(){
+  return this.http.get(this.ROOT_URL + '/getResume')
+}
+// editResume(){
+//   return this.http.get(this.ROOT_URL+ "/editResume");
+// }
+
+// setResumeData(data: any) {
+//   // this.resumeData = data;
+//   return this.http.post(this.ROOT_URL, data);
+// }
+
+
+
+
+
+
+
+
+
 
   getAllCV() {
     return this.http.get(this.ROOT_URL + '/cvinfo', {

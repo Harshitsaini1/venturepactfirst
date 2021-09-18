@@ -1,0 +1,7 @@
+{
+    "/secure/*": {
+      "target": "https://harshfirst.herokuapp.com",
+      "secure": false,
+      "cookieDomainRewrite": "harshfirst.herokuapp.com"
+    }
+  }

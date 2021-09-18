@@ -139,8 +139,6 @@ exports.checkUserName = function (req, res) {
 
 exports.profile = function (req, res) {
   console.log("profile request");
-  
-  
   console.log(req.cookies);
   if (req["cookies"]["auth"] === undefined) {
     return res.status(401).json({
@@ -271,6 +269,60 @@ exports.updateProfile = function (req, res) {
 
 
 // resume --------------------------------------------------------------------------------------------
+
+exports.ResumeData= async function(req,res){
+  console.log(req.cookies);
+  if (req["cookies"]["auth"] === undefined) {
+    return res.status(401).json({
+      redirect: true,
+      location: "login",
+      message: "Auth token not found",
+    });
+  }
+
+  jwt.verify(req["cookies"]["auth"], "mysecretKey", (err, authData) => {
+    console.log("Inside jwt");
+    console.log(authData.userId);
+    if (err) {
+      console.log(err);
+      res.sendStatus(404);
+    } else {
+      console.log("block running");
+      ngCV
+        .findOne({ email: authData.userId })
+        .lean()
+        .then((data) => {
+          console.log("resumedata");
+          console.log(data);
+          if (data == null) {
+            return res.status(404).json({
+              userFound: false,
+              status: false,
+              info: "resume NOT FOUND ",
+            });
+          }
+          //if email is available we cant use email
+          res.status(200).send({
+           data
+            
+          });
+        })
+        .catch((Err) => {
+          console.log(Err);
+          res.status(404).json({
+            status: false,
+            info: "User FOUND ERROR",
+          });
+        });
+    }
+  });
+  
+  // res.send({message: "Success"});
+}
+
+
+
+
 
 
 

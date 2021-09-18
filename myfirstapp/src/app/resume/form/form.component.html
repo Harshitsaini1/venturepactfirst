@@ -1,18 +1,18 @@
 <body>
 
-    <div class="mainContainer whiteBack">
+    <!-- <div class="mainContainer whiteBack">
         <button *ngIf="!showForm" (click)="clickShowForm()" class="btn btn-success" style="margin: 5px">New
             Resume</button>
         <button *ngIf="showForm" (click)="showForm=false" class="btn btn-danger" style="margin: 5px">Close
         </button>
-    </div>
+    </div> -->
     <div>
         <p class="bg-light fs-5 text-muted text-center" *ngIf="showLoadMessage">
             {{loadMessage}} <span class="spinner-grow spinner-grow-sm text-danger" role="status"
                 aria-hidden="true"></span>
         </p>
     </div>
-    <div *ngIf="showForm" class="row d-flex align-items-center justify-content-center whiteBack ">
+    <div  class="row d-flex align-items-center justify-content-center whiteBack ">
         <h1 class="text-center">My Resume</h1>
         <div class="container">
             <form class="row row-cols-sm-auto g-3 align-items-center" [formGroup]="myform" (ngSubmit)=onSubmit()>
@@ -174,7 +174,7 @@
                     <button type="button" (click)="updateResume()" [disabled]="currentResumeID==''" class="ms-3">Update
                         Resume</button>
                     <div class="float-end">
-                        <button type="button" (click)="saveResumeDate()" [disabled]="disableSubmit"
+                        <button type="button" (click)="saveResumeData()" [disabled]="disableSubmit"
                             class="btn btn-primary">Save
                             New</button>
                     </div>

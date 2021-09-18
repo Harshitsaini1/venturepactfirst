@@ -2,7 +2,7 @@ var mongoose = require("mongoose");
 
 var resumeSchema = mongoose.Schema(
   {
-    // email:{type:String, required: true},
+    email : String,
     userdata: {
       fname: { type: String },   
       lname: { type: String },  
