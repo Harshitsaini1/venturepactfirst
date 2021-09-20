@@ -24,7 +24,7 @@ export class DataService {
   dataChannel = new Subject();
 
   constructor(private http: HttpClient) {
-    this.ROOT_URL = "api";
+    this.ROOT_URL = "/api";
     console.log(this.ROOT_URL);
 
     console.log('User auth key: ' + localStorage.getItem('auth'));
@@ -85,10 +85,10 @@ getData(){
 //   return this.http.get(this.ROOT_URL+ "/editResume");
 // }
 
-// setResumeData(data: any) {
-//   // this.resumeData = data;
-//   return this.http.post(this.ROOT_URL, data);
-// }
+setResumeData(data: any) {
+  // this.resumeData = data;
+  return this.http.post(this.ROOT_URL, data);
+}
 
 
 

@@ -1,4 +1,4 @@
-<div>
+<div id="MyResume">
   <p class="bg-light fs-5 text-muted text-center" *ngIf="showLoadMessage">
     Loading Data ...<span class="spinner-grow spinner-grow-sm text-danger" role="status" aria-hidden="true"></span>
   </p>
@@ -8,6 +8,9 @@
 <div  class="model-container">
   <div class=" placeButton">
     <button type="button"  class="btn btn-secondary" (click)="closeResume()">Close Resume</button>
+     <button type="button" (click) = "Download">Download</button>
+     
+    
     <!-- <button type="button"  (click)="pdf.saveAs('invoice.pdf')" class="m-3" mat-raised-button color="accent">Download Resume</button> -->
   </div>
   <!-- <kendo-pdf-export #pdf paperSize="A4" margin="0.0cm" [scale]="0.65"> -->
@@ -89,4 +92,6 @@
       </ul>
     </div> -->
   <!-- </kendo-pdf-export> -->
+ 
 </div>
+

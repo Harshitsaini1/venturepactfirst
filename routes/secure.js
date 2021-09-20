@@ -23,11 +23,11 @@ router.get("/getResume", secureController.ResumeData);
 
 
 // ------------------------------------resume---------------------------------------------------------
-router.get("/cvinfo", secureController.getCVdet);
-router.post("/cvSingle", secureController.getOneCV);
-router.post("/updateResume", secureController.updateResume);
+// router.get("/cvinfo", secureController.getCVdet);
+// router.post("/cvSingle", secureController.getOneCV);
+// router.post("/updateResume", secureController.updateResume);
 router.post("/newResume", secureController.newResume);
-router.post("/deleteResume", secureController.deleteResume);
+// router.post("/deleteResume", secureController.deleteResume);
 
 
 

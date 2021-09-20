@@ -5,9 +5,9 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/service/data.service';
-import { Subscription } from 'rxjs';
-// import { jsPDF } from 'jspdf';
-// import html2canvas from 'html2canvas';
+
+import { jsPDF } from 'jspdf';
+import html2canvas from 'html2canvas';
 // import { Template1Component } from './template1/template1.component';
 
 @Component({
@@ -35,12 +35,9 @@ export class DisplayComponent implements OnInit {
         this.showResume=true;
         console.log("myresume data ", this.myresumedata);
         console.log(this.myresumedata.userdata.fname);
-        
-
       },
       (err) => console.error(err)
-    );
-    
+    );   
 }
 // 
   // function 
@@ -53,5 +50,16 @@ export class DisplayComponent implements OnInit {
     console.log("display navigate to home");
   }
 
-  
+
+  Download() {
+    const resume: any = document.querySelector('#MyResume');
+    html2canvas(resume, { allowTaint: true, useCORS: true }).then((canvas) => {
+      const img = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      const width = pdf.internal.pageSize.getWidth();
+      const height = pdf.internal.pageSize.getHeight();
+      pdf.addImage(img, 'JPEG', 0, 0, width, height);
+      pdf.save('Resume.pdf');  
+    });  
+  }  
 }

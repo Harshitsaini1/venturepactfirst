@@ -9,7 +9,7 @@
                 </li>
                 <li class="nav-item active">
                     <a routerLinkActive="active" aria-current="page" href="#" *ngIf="userLogged"
-                    routerLink="/resume">Resume</a>
+                    routerLink="/resume">Edit Resume</a>
                 </li>
                 <li class="nav-item active">
                     <a *ngIf="!userLogged" routerLinkActive="active" type="submit" routerLink="/login">Login</a>
@@ -24,12 +24,12 @@
                         (click)="logoutUser()">Logout</a>
                 </li>
                 <li class="nav-item active">
-                    <a routerLinkActive="active" aria-current="page"  *ngIf="userLogged"
-                    routerLink="/profile">Profile</a>
-                </li>
-                <li class="nav-item active">
                     <a routerLinkActive="active" aria-current="page"
                         routerLink="/display"   *ngIf="userLogged">view Resume  </a>
+                </li>
+                <li class="nav-item active">
+                    <a routerLinkActive="active" aria-current="page"  *ngIf="userLogged"
+                    routerLink="/profile">Profile</a>
                 </li>
 
 

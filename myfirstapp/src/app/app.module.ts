@@ -8,7 +8,7 @@ import { FormComponent } from './resume/form/form.component';
 import { DisplayComponent } from './resume/display/display.component';
 import { PlaceholderDirectiveDirective } from './placeholder-directive.directive';
 import { AuthInceptorService } from './service/auth-inceptor.service';
-import { MyformComponent } from './Cv/myform/myform.component';
+
 
 
 @NgModule({
@@ -21,7 +21,7 @@ import { MyformComponent } from './Cv/myform/myform.component';
          FormComponent,
          DisplayComponent,
          PlaceholderDirectiveDirective,
-         MyformComponent
+        
   ],
   imports: [
     BrowserModule,

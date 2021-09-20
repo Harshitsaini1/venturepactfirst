@@ -322,6 +322,9 @@ editResume(formData: any) {
     console.log('resetting form data');
     this.myform.reset();
   }
+
+
+
   //adding sub components of a block
 
   onaddskill() {
