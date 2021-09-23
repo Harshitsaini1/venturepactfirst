@@ -13,14 +13,6 @@ export class DataService {
   JWT_TOKEN: string = 'null';
   isLogged: boolean = false;
   userStatus = new EventEmitter<boolean>();
-  editResumeSelect = new EventEmitter<String>(); //to emit the edit resume selection
-  previewResumeSelect = new EventEmitter<String>(); //to emit the preview resume selection
-  refreshResume = new EventEmitter<String>(); //to emit the preview resume selection
-  templateSelect: Subject<any> = new Subject<any>();
-  closeForm: Subject<any> = new Subject<any>();
-  templatesShow: Subject<any> = new Subject<any>();
-  ShowResume:Subject<any> =new Subject<any>();
-
   dataChannel = new Subject();
 
   constructor(private http: HttpClient) {
@@ -90,40 +82,6 @@ setResumeData(data: any) {
   return this.http.post(this.ROOT_URL, data);
 }
 
-
-
-
-
-
-
-
-
-
-  getAllCV() {
-    return this.http.get(this.ROOT_URL + '/cvinfo', {
-      observe: 'response' as 'body',
-    });
-  }
-  getOneCV(id: any) {
-    return this.http.post(
-      this.ROOT_URL + '/cvSingle',
-      { _id: id },
-      {
-        observe: 'response' as 'body',
-      }
-    );
-  }
-
-  updateResume(data: any, curId: any) {
-    return this.http.post(
-      this.ROOT_URL + '/updateResume',
-      { curId: curId, data: data },
-      {
-        observe: 'response' as 'body',
-      }
-    );
-  }
-
   addResume(data: any) {
     return this.http.post(
       this.ROOT_URL + '/newResume',
@@ -134,16 +92,7 @@ setResumeData(data: any) {
     );
   }
 
-  deleteCV(id: any) {
-    return this.http.post(
-      this.ROOT_URL + '/deleteResume',
-      { _id: id },
-      {
-        observe: 'response' as 'body',
-      }
-    );
-  }
-
+  
 
   logoutUser() {
     return this.http.get(this.ROOT_URL + '/logout', {

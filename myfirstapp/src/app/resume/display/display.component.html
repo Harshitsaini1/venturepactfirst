@@ -5,77 +5,91 @@
 </div>
 <ng-template appPlaceholder></ng-template>
 
-<div  class="model-container">
+<div class="model-container">
   <div class=" placeButton">
-    <button type="button"  class="btn btn-secondary" (click)="closeResume()">Close Resume</button>
-     <button type="button" (click) = "Download">Download</button>
-     
-    
+    <button type="button" class="btn btn-secondary" (click)="closeResume()">Close Resume</button>
+    <button type="button" (click)="Download">Download</button>
+
+
     <!-- <button type="button"  (click)="pdf.saveAs('invoice.pdf')" class="m-3" mat-raised-button color="accent">Download Resume</button> -->
   </div>
   <!-- <kendo-pdf-export #pdf paperSize="A4" margin="0.0cm" [scale]="0.65"> -->
 
-    <div class="model shadow-lg" #pdfTable>
-      <div class="row top">
-        <div class="col col-8">
-          <h1 style="font-size: 40px">{{myresumedata.userdata.fname}} {{myresumedata.userdata.lname}}</h1>
-          <h1>{{myresumedata.userdata.profession}}</h1>
-          <h3> Phone: +91 7889152578, {{myresumedata.userdata.Address}}</h3>
-        </div>
-        <div class="col col-4">
-          <!-- <h3>Github: {{myresumedata.socialLink.linkedInLink}}</h3>
+  <div class="model shadow-lg" #pdfTable>
+    <div class="row top">
+      <div class="col col-8">
+        <h1 style="font-size: 40px">{{myresumedata.userdata.fname}} {{myresumedata.userdata.lname}}</h1>
+        <h1>{{myresumedata.userdata.profession}}</h1>
+        <h3> Phone: {{myresumedata.userdata.Phone}}, {{myresumedata.userdata.Address}}</h3>
+      </div>
+      <div class="col col-4">
+        <!-- <h3>Github: {{myresumedata.socialLink.linkedInLink}}</h3>
           <h3>Linkedin: {{myresumedata.socialLink.gitHubLink}}</h3> -->
-          <h3><strong>Email:</strong> {{myresumedata.userdata.email}}</h3>
+        <h3><strong>Email:</strong> {{myresumedata.userdata.email}}</h3>
+      </div>
+    </div>
+
+    <div class="desc">
+      <h1>Some description here</h1>
+    </div>
+
+    <div class="skills">
+      <h1><strong>Skills</strong></h1>
+      <br>
+      <div class="row">
+        <div class="col col-8">
+          <p *ngFor="let skl of myresumedata.skill">{{skl.Skills}}</p>
         </div>
-      </div>
-
-      <div class="desc">
-        <h1>Some description here</h1>
-      </div>
-
-      <div class="skills">
-        <h1><strong>Skills</strong></h1>
-        <br>
-        <div class="row">
-          <div class="col col-8">
-            <p *ngFor="let skill of myresumedata.skill">{{skill.name}}</p>
-          </div>
-          <!-- <div class="col col-4">
+        <!-- <div class="col col-4">
             <div class="progress" *ngFor="let skill of myresumedata.skill" style="margin-bottom: 20px">
               <div class="progress-bar bg-info" role="progressbar" style="width:{{skill.level*20}}%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">{{skill.level}}</div>
              </div>
           </div> -->
-        </div>
       </div>
+    </div>
 
-      <div>
-        <h1>Experience</h1>
-        <div class="row" *ngFor="let job of myresumedata.experience">
-          <!-- <div class="col col-4">
+    <div>
+      <h1><strong>Experience</strong></h1>
+      <div class="row" *ngFor="let job of myresumedata.experience">
+        <!-- <div class="col col-4">
             {{job.startDate | date:'mediumDate'}} to {{job.endDate | date:'mediumDate'}}
           </div> -->
-          <div class="col col-8">
-            <h3 >{{job.Role}} @ {{job.Cname}}}</h3>
-            <ul>
-              <li *ngFor="let desc of job.Description">{{desc}}</li>
-            </ul>
-          </div>
+        <div class="col col-8">
+          <h3>{{job.Role}} @ {{job.Cname}}}</h3>
+          <ul>
+            <li *ngFor="let desc of job.Description">{{desc}}</li>
+          </ul>
         </div>
       </div>
+    </div>
 
-      <h1>Education</h1>
-      <div class="row edu" *ngFor="let edu of myresumedata.education">
-        <!-- <div class="col col-4">
+    <h1><strong>Education</strong></h1>
+    <div class="row edu" *ngFor="let edu of myresumedata.education">
+      <!-- <div class="col col-4">
           {{edu.startDate | date:'mediumDate'}} to {{edu.endDate | date:'mediumDate'}}
         </div> -->
-        <div class="col col-8">
-          <h3>{{edu.School}}</h3>
-          <p class="display-5">{{edu.Degree}} </p>
-          <p class="display-5">{{edu.CGPA}} </p>
-        </div>
+      <div class="col col-8">
+        <h3>{{edu.School}}</h3>
+        <p class="display-5">{{edu.Degree}} </p>
+        <p class="display-5">{{edu.CGPA}} </p>
       </div>
+    </div>
 
-      <!-- <h1>Certification</h1>
+    <h1><strong>Project</strong></h1>
+    <div class="row edu" *ngFor="let pro of myresumedata.project">
+      <!-- <div class="col col-4">
+          {{edu.startDate | date:'mediumDate'}} to {{edu.endDate | date:'mediumDate'}}
+        </div> -->
+      <div class="col col-8">
+        <h3>{{pro.pname}}</h3>
+
+        <ul>
+            <li *ngFor="let desc of pro.Description">{{desc}}</li>
+          </ul>
+      </div>
+    </div>
+
+    <!-- <h1>Certification</h1>
       <div class="row edu" *ngFor="let cert of myresumedata.certification">
         <div class="col col-4">
           {{cert.date | date:'mediumDate'}}
@@ -91,7 +105,7 @@
         <li *ngFor="let hob of myresumedata.hobbies">{{hob}}</li>
       </ul>
     </div> -->
+  </div>
   <!-- </kendo-pdf-export> -->
- 
-</div>
 
+</div>

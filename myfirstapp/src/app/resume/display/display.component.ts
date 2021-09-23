@@ -8,7 +8,6 @@ import { DataService } from 'src/app/service/data.service';
 
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
-// import { Template1Component } from './template1/template1.component';
 
 @Component({
   selector: 'app-display',
@@ -35,6 +34,7 @@ export class DisplayComponent implements OnInit {
         this.showResume=true;
         console.log("myresume data ", this.myresumedata);
         console.log(this.myresumedata.userdata.fname);
+        console.log(this.myresumedata.project.pname);
       },
       (err) => console.error(err)
     );   
