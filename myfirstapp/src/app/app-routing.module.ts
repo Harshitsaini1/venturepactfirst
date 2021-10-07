@@ -6,6 +6,11 @@ import { ProfileComponent } from './profile/profile.component';
 import { SignupComponent } from './signup/signup.component';
 import { FormComponent } from './resume/form/form.component';
 import { DisplayComponent } from './resume/display/display.component';
+import { TemplateComponent } from './resume/template/template.component';
+import { MultitemplateComponent } from './resume/multitemplate/multitemplate.component';
+import { FirstComponent } from './first/first.component';
+
+
 
 
 const routes: Routes = [
@@ -14,7 +19,12 @@ const routes: Routes = [
   { path: 'login',  component: LoginComponent},
   { path: 'profile',  component: ProfileComponent},
   {path: 'resume', component: FormComponent},
-  {path: 'display', component: DisplayComponent}
+  {path: 'display', component: DisplayComponent},
+  {path: 'template', component: TemplateComponent},
+  {path: 'all', component:MultitemplateComponent},
+  {path:'first', component:FirstComponent}
+ 
+  
 
   
 
@@ -25,4 +35,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [SignupComponent, LoginComponent,ProfileComponent, HomeComponent, FormComponent, DisplayComponent] 
+export const routingComponents = [SignupComponent, LoginComponent,ProfileComponent,HomeComponent,
+ FormComponent, DisplayComponent, TemplateComponent, MultitemplateComponent,FirstComponent] 

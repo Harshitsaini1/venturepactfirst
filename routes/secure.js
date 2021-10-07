@@ -2,12 +2,12 @@ var express = require("express");
 var router = express.Router();
 var secureController = require("../controllers/secureng");
 
-router.get('/secure', (req, res) => {
-    res.json({
-        secure: true,
-        message: 'data con  success'
-    })
-})
+// router.get('/secure', (req, res) => {
+//     res.json({
+//         secure: true,
+//         message: 'data con  success'
+//     })
+// })
 router.get('/', (req, res) => {
     res.send('api router working')
 })
@@ -17,17 +17,16 @@ router.post("/login", secureController.loginUser);
 router.get("/checkUserId/:uid", secureController.checkUserName);
 router.get("/profile", secureController.profile);
 router.post("/update", secureController.updateProfile);
-router.get("/getResume", secureController.ResumeData);
+
 
 
 
 
 // ------------------------------------resume---------------------------------------------------------
-// router.get("/cvinfo", secureController.getCVdet);
-// router.post("/cvSingle", secureController.getOneCV);
-// router.post("/updateResume", secureController.updateResume);
+
 router.post("/newResume", secureController.newResume);
-// router.post("/deleteResume", secureController.deleteResume);
+router.get("/getResume", secureController.ResumeData);
+
 
 
 

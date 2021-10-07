@@ -5,53 +5,57 @@
         <button *ngIf="showForm" (click)="showForm=false" class="btn btn-danger" style="margin: 5px">Close
         </button>
     </div> -->
-    <div>
+    <!-- <div>
         <p class="bg-light fs-5 text-muted text-center" *ngIf="showLoadMessage">
             {{loadMessage}} <span class="spinner-grow spinner-grow-sm text-danger" role="status"
                 aria-hidden="true"></span>
         </p>
-    </div>
+    </div> -->
     <div class="row d-flex align-items-center justify-content-center whiteBack ">
         <h1 class="text-center">My Resume</h1>
         <div class="container">
-            <form class="row row-cols-sm-auto g-3 align-items-center" [formGroup]="myform" (ngSubmit)=onSubmit()>
-                <h3>Enter Your Details</h3>
+            <form class="row g-3 align-items-center" [formGroup]="myform" (ngSubmit)=onSubmit()>
+                <h3 class="text-center col-md-12">Enter Your Details</h3>
                 <div formGroupName="userdata">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="fname" class="form-label">First Name</label>
-                            <input name="fname" type="text" class="form-control" id="fname" formControlName="fname"
-                                placeholder="First Name">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="fname" class="form-label">First Name</label>
+                                <input name="fname" type="text" class="form-control" id="fname" formControlName="fname"
+                                    placeholder="First Name">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="lname" class="form-label">Last Name</label>
+                                <input name="lname" type="text" class="form-control" id="lname" formControlName="lname"
+                                    placeholder="Last Name">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="Profession" class="form-label">Profession</label>
+                                <input name="Profession" type="text" class="form-control" id="Profession"
+                                    formControlName="Profession" placeholder="Profession">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email</label>
+                                <input name="email" type="text" class="form-control" id="email" formControlName="email"
+                                    placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="Phone" class="form-label">Phone No.</label>
+                                <input name="Phone" type="text" class="form-control" id="Phone" formControlName="Phone"
+                                    placeholder="Phone">
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="lname" class="form-label">Last Name</label>
-                            <input name="lname" type="text" class="form-control" id="lname" formControlName="lname"
-                                placeholder="Last Name">
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="Profession" class="form-label">Profession</label>
-                            <input name="Profession" type="text" class="form-control" id="Profession"
-                                formControlName="Profession" placeholder="Profession">
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="email" class="form-label">Email</label>
-                            <input name="email" type="text" class="form-control" id="email" formControlName="email"
-                                placeholder="Email">
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="Phone" class="form-label">Phone No.</label>
-                            <input name="Phone" type="text" class="form-control" id="Phone" formControlName="Phone"
-                                placeholder="Phone">
-                        </div>
-                    </div>
+                    
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="Address" class="form-label">Address</label>
@@ -78,118 +82,115 @@
             <!-- ----------------------------------------education ------------------------------>
 
             <form class="row row-cols-sm-auto g-3 align-items-center" [formGroup]="myform">
-            <h3>Add Education {{myform?.get('education')?.get('length')}}
-                <button class="btn btn-secondary" (click)="onaddedu()"> Add</button>
-            </h3>
-            <div formArrayName="education">
+                <h3>Add Education {{myform?.get('education')?.get('length')}}
+                    <button class="btn btn-success" (click)="onaddedu()"> Add</button>
+                </h3>
+                <div formArrayName="education">
 
-                <div class="form-grouop" *ngFor=" let eduControl of getControlsedu(); let i =index">
-                    <div [formGroupName]="i">
-                        <label for="School" class="form-label">School</label>
-                        <input type="text" name="School" class="form-control" formControlName="School"
-                            placeholder="Type Your School Name">
-                        <div class="form-group">
-                            <label for="Degree" class="form-label">Degree</label>
-                            <input name="Degree" type="text" class="form-control" id="Desgree" formControlName="Degree"
-                                placeholder="Degree">
+                    <div class="form-grouop" *ngFor=" let eduControl of getControlsedu(); let i =index">
+                        <div [formGroupName]="i">
+                            <label for="School" class="form-label">School</label>
+                            <input type="text" name="School" class="form-control" formControlName="School"
+                                placeholder="Type Your School Name">
+                            <div class="form-group">
+                                <label for="Degree" class="form-label">Degree</label>
+                                <input name="Degree" type="text" class="form-control " id="Desgree"
+                                    formControlName="Degree" placeholder="Degree">
+                            </div>
+                            <div>
+                                <label for="CGPA" class="form-label">CGPA</label>
+                                <input name="CGPA" type="text" class="form-control" id="CGPA" formControlName="CGPA"
+                                    placeholder="CGPA">
+                            </div>
                         </div>
-                        <div>
-                            <label for="CGPA" class="form-label">CGPA</label>
-                            <input name="CGPA" type="text" class="form-control" id="CGPA" formControlName="CGPA"
-                                placeholder="CGPA">
-                        </div>
+
+
+
+                        <button class="btn btn-primary" type="reset" style="margin: 10px;">reset </button>
+                        <button *ngIf="myform?.get('education')?.get('length')" class="btn btn-danger" type="button"
+                            (click)="removeformedu()">Delete </button>
                     </div>
-
                 </div>
-                <button class="btn btn-primary" type="reset">reset </button>
-                <button *ngIf="myform?.get('education')?.get('length')" class="btn btn-danger" type="button"
-                    (click)="removeformedu()">Delete </button>
-            </div>
             </form>
             <!-- ------------------------experience ---------------------->
             <form class="row row-cols-sm-auto g-3 align-items-center" [formGroup]="myform">
-            <div formArrayName="experience">
-                <h3>{{myform?.get('experience')?.get('length')}}Add Work Experience
-                    <button class="btn btn-secondary" (click)="onaddexp()"> Add</button>
-                </h3>
-                <div class="form-grouop" *ngFor=" let expControl of getControlsexp(); let i =index">
-                    <div [formGroupName]="i">
-                        <label for="Cname" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="Cname" formControlName="Cname"
-                            placeholder="Company Name">
-                        <div class="form-group">
-                            <label for="Role" class="form-label">Role</label>
-                            <input name="Role" type="text" class="form-control" id="Role" formControlName="Role"
-                                placeholder="Role">
+                <div formArrayName="experience">
+                    <h3>{{myform?.get('experience')?.get('length')}}Add Work Experience
+                        <button class="btn btn-success" (click)="onaddexp()"> Add</button>
+                    </h3>
+                    <div class="form-grouop" *ngFor=" let expControl of getControlsexp(); let i =index">
+                        <div [formGroupName]="i">
+                            <label for="Cname" class="form-label col-md-6">Name</label>
+                            <input type="text" class="form-control" id="Cname" formControlName="Cname"
+                                placeholder="Company Name">
+                            <div class="form-group">
+                                <label for="Role" class="form-label">Role</label>
+                                <input name="Role" type="text" class="form-control" id="Role" formControlName="Role"
+                                    placeholder="Role">
+                            </div>
+                            <div>
+                                <label for="Description" class="form-label">Description</label>
+                                <textarea name="Description" type="" class="form-control" id="Description"
+                                    formControlName="Description" rows="4" cols="30"></textarea>
+                            </div>
                         </div>
-                        <div>
-                            <label for="Description" class="form-label">Description</label>
-                            <textarea name="Description" type="" class="form-control" id="Description"
-                                formControlName="Description" rows="4" cols="20"></textarea>
-                        </div>
+                        <button class="btn btn-primary" type="reset" style="margin: 10px;">reset </button>
+                        <button *ngIf="myform?.get('experience')?.get('length')" class="btn btn-danger" type="button"
+                            (click)="removeformexp()">Delete </button>
                     </div>
-                    <button class="btn btn-primary" type="reset">reset </button>
-                    <button *ngIf="myform?.get('experience')?.get('length')" class="btn btn-danger" type="button"
-                        (click)="removeformexp()">Delete </button>
                 </div>
-            </div>
             </form>
 
             <!----------------------- project ------------------------>
             <form class="row row-cols-sm-auto g-3 align-items-center" [formGroup]="myform">
-            <div formArrayName="project">
-                <h3>Add Projects {{myform?.get('project')?.get('length')}}
-                    <button class="btn btn-secondary" (click)="onaddproj()"> Add</button>
-                </h3>
-                <div class="form-grouop" *ngFor=" let projectControl of getControlsproj(); let i =index">
-                    <div [formGroupName]="i">
-                        <div class="form-group">
-                            <label for="pname" class="form-label">Project Name</label>
-                            <input type="text" class="form-control" formControlName="pname" placeholder="ProjectName">
+                <div formArrayName="project">
+                    <h3>Add Projects {{myform?.get('project')?.get('length')}}
+                        <button class="btn btn-success" (click)="onaddproj()"> Add</button>
+                    </h3>
+                    <div class="form-grouop" *ngFor=" let projectControl of getControlsproj(); let i =index">
+                        <div [formGroupName]="i">
+                            <div class="form-group">
+                                <label for="pname" class="form-label">Project Name</label>
+                                <input type="text" class="form-control" formControlName="pname"
+                                    placeholder="ProjectName">
+                            </div>
+                            <div class="form-group">
+                                <label for="Description" class="form-label">Description</label>
+                                <textarea name="Description" type="text" class="form-control" id="Detail"
+                                    formControlName="Description"></textarea>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="Description" class="form-label">Description</label>
-                            <textarea name="Description" type="text" class="form-control" id="Detail"
-                                formControlName="Description"></textarea>
-                        </div>
+                        <button class="btn btn-primary" type="reset" style="margin: 10px;">reset </button>
+                        <button *ngIf="myform?.get('project')?.get('length')" class="btn btn-danger" type="button"
+                            (click)="removeformproj()">Delete </button>
                     </div>
-                    <button class="btn btn-primary" type="reset">reset </button>
-                    <button *ngIf="myform?.get('project')?.get('length')" class="btn btn-danger" type="button"
-                        (click)="removeformproj()">Delete </button>
                 </div>
-            </div>
 
             </form>
 
             <!-- ------------------skill ---------------------------->
             <form class="row row-cols-sm-auto g-3 align-items-center" [formGroup]="myform">
 
-            <div formArrayName="skill">
-                <h3>Add Skills {{myform?.get('skill')?.get('length')}}
-                    <button class="btn btn-secondary" (click)="onaddskill()"> Add</button>
-                </h3>
-                <div class="form-grouop" *ngFor=" let skillControl of getControlsskills(); let i =index">
-                    <div [formGroupName]="i">
-                        <div>
-                            <label for="Skills" class="form-label">Skills</label>
-                            <input name="Skills" type="text" class="form-control" id="Skills" formControlName="Skills">
+                <div formArrayName="skill">
+                    <h3>Add Skills {{myform?.get('skill')?.get('length')}}
+                        <button class="btn btn-success" (click)="onaddskill()"> Add</button>
+                    </h3>
+                    <div class="form-grouop" *ngFor=" let skillControl of getControlsskills(); let i =index">
+                        <div [formGroupName]="i">
+                            <div>
+                                <label for="Skills" class="form-label">Skills</label>
+                                <input name="Skills" type="text" class="form-control" id="Skills"
+                                    formControlName="Skills">
+                            </div>
                         </div>
+                        <button class="btn btn-primary" type="reset" style="margin: 10px;">reset </button>
+                        <button *ngIf="myform?.get('skill')?.get('length')" class="btn btn-danger" type="button"
+                            (click)="removeformskill()">Delete </button>
                     </div>
-                    <button class="btn btn-primary" type="reset">reset </button>
-                    <button *ngIf="myform?.get('skill')?.get('length')" class="btn btn-danger" type="button"
-                        (click)="removeformskill()">Delete </button>
                 </div>
-            </div>
             </form>
             <hr>
             <div class="text-center">
-                <!-- <button type="reset" (click)="resetFormResume()" class="ms-3 btn btn-secondary"
-                    style="margin: auto;">Reset
-                    Data</button>
-                <button type="button" (click)="deleteResume()" [disabled]="currentResumeID==''" class="ms-3">
-                    Delete Resume</button>
-                <button type="button" (click)="updateResume()" [disabled]="currentResumeID==''" class="ms-3">Update
-                    Resume</button> -->
                 <div class="float-end">
                     <button type="button" (click)="saveResumeData()" [disabled]="disableSubmit"
                         class="btn btn-primary">Save

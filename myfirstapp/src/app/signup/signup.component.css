@@ -1,9 +1,10 @@
 .container{
     width: 500px;
-    height: 300px;
+    height: auto;
     background-color: rgb(38, 216, 83);
     border: 2px solid black;
     margin-top: 20px;
+    border-radius: 20px;
 }
 
 li{
@@ -24,4 +25,8 @@ li{
 input.ng-invalid.ng-touched{
     border: 1px solid red;
 
+}
+
+.back{
+    background-image:"./" ;
 }

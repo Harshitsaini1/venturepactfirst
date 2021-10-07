@@ -1,0 +1,18 @@
+.bg-container {
+    background-image: url("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg");
+    background-size:cover;
+    background-repeat:no-repeat;
+    block-size: 700px;
+  }
+.template {
+    width: 40%;
+    border: 1px solid rgb(131, 131, 138);
+    filter: brightness(70%);
+}
+.template:hover {
+    width: 100%;
+    cursor: pointer;
+}
+
+  
+  

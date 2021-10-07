@@ -1,17 +1,17 @@
-<app-home></app-home>
-<div class="row">
-    <div class="col-6"  >
+<div class="bck">
+  <app-home></app-home>
+  <div class="row">
+    <div class="col-6">
       <div class="myContainer">
         <div class="model">
-          <h3>My Profile<button class="btn btn-info" style="margin: 10px;" (click)="editProfile=true">Edit Profile</button></h3>
+          <h3>My Profile<button class="btn btn-info" style="margin: 10px;" (click)="editProfile=true">Edit
+              Profile</button></h3>
           <hr>
           <div class="border-dark">
             <p><strong>Email- </strong>{{email}}</p>
             <p class="h3"><strong>UserName- </strong>{{userName}}</p>
             <p class="h3"><strong>Name- </strong>{{firstname}}</p>
-            
           </div>
-          
         </div>
       </div>
     </div>
@@ -22,41 +22,44 @@
           <hr>
           <form class="row row-cols-sm-auto g-3 align-items-center">
             <div class="form-row">
-            <div class="col">
-              <div class="input-group">
-                <div class="input-group-text">Name</div>
-                <input type="text" [(ngModel)]="firstname" class="form-control"  placeholder="First Name" name="firstname">
+              <div class="col">
+                <div class="input-group">
+                  <div class="input-group-text">Name</div>
+                  <input type="text" [(ngModel)]="firstname" class="form-control" placeholder="First Name"
+                    name="firstname">
+                </div>
+              </div>
+              <div class="col">
+                <div class="input-group">
+                  <div class="input-group-text">User Name </div>
+                  <input type="text" [(ngModel)]="userName" class="form-control" name="usrName" id="Username"
+                    placeholder="username">
+                </div>
+              </div>
+              <div class="col">
+                <div class="input-group">
+                  <div class="input-group-text">Your Email</div>
+                  <input type="email" [(ngModel)]="email" (keyup)="checkUserAvl($event)" class="form-control"
+                    name="email" placeholder="Enter your email">
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="input-group">
+                  <div class="input-group-text">Password</div>
+                  <input type="password" [(ngModel)]="password" class="form-control" name="password"
+                    placeholder="Please Enter Your Password">
+                </div>
               </div>
             </div>
-            <div class="col">
-              <div class="input-group">
-                <div class="input-group-text">User Name </div>
-                <input type="text" [(ngModel)]="userName"  class="form-control" name="usrName" id="Username" placeholder="username">  
-              </div>
-            </div>
-  
-            <div class="col">
-              <div class="input-group">
-                <div class="input-group-text">Your Email</div>
-                <input type="email" [(ngModel)]="email" (keyup)="checkUserAvl($event)" class="form-control" name="email" placeholder="Enter your email">
-              </div>
-            </div>
-  
-            <div class="col">
-              <div class="input-group">
-                <div class="input-group-text">Password</div>
-                <input type="password" [(ngModel)]="password" class="form-control" name="password" placeholder="Please Enter Your Password">
-              </div>
-            </div>
-          </div>
-  
-  
             <div class="col-6">
-              <button type="button" class="btn btn-success" [ngClass]="{disabled:disableUpdate}" (click)="saveProfileData()">Change Profile</button>
+              <button type="button" class="btn btn-success" [ngClass]="{disabled:disableUpdate}"
+                (click)="saveProfileData()">Change Profile</button>
             </div>
-            <div class="col-6 fs-4" >
+            <div class="col-6 fs-4">
               <p class="bg-light fs-5 text-muted" *ngIf="showMessage">
-                {{logProcessMessage}}  <span class="spinner-grow spinner-grow-sm text-danger" role="status" aria-hidden="true"></span>
+                {{logProcessMessage}} <span class="spinner-grow spinner-grow-sm text-danger" role="status"
+                  aria-hidden="true"></span>
               </p>
             </div>
           </form>
@@ -64,9 +67,9 @@
       </div>
     </div>
   </div>
-  
   <div class="row ">
     <p class="bg-light fs-5 text-muted ms-5 text-center" *ngIf="showMessage">
-      Loading Profile  <span class="spinner-grow spinner-grow-sm text-danger" role="status" aria-hidden="true"></span>
+      Loading Profile <span class="spinner-grow spinner-grow-sm text-danger" role="status" aria-hidden="true"></span>
     </p>
   </div>
+</div>

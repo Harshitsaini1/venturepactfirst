@@ -1,5 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit} from '@angular/core';
+import { FormArray,FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/service/data.service';
 
@@ -36,16 +36,18 @@ export class FormComponent implements OnInit {
   loadMessage: String = 'Fetching Loaded data...';
 
   disableSubmit: boolean = false;
+ 
 
 
 ngOnInit(): void { 
   console.log("myform loaded");
-  this.dataservice.getData().subscribe(res=>{
+  this.dataservice.getData().subscribe((res: any)=>{
     console.log("my data", res);
     console.log(JSON.parse(JSON.stringify(res)).data.userdata.fname);
     const edu = JSON.parse(JSON.stringify(res)).data.education;
     const proj = JSON.parse(JSON.stringify(res)).data.project;
     const exp =  JSON.parse(JSON.stringify(res)).data.experience;
+    const skl= JSON.parse(JSON.stringify(res)).data.skill;
     // console.log(edu.length);
     for (let i=0; i< edu.length; i++){
       this.onaddedu();
@@ -56,13 +58,17 @@ ngOnInit(): void {
     for (let i=0; i< exp.length; i++){
       this.onaddexp();
     }
-    
+    for(let i=0; i<skl.length;i++){
+      this.onaddskill();
+    }
+  
 
     this.myform.patchValue({
-      userdata: JSON.parse(JSON.stringify(res)).data.userdata,
-      education: JSON.parse(JSON.stringify(res)).data.education,
-      project: JSON.parse(JSON.stringify(res)).data.project,
-      experience: JSON.parse(JSON.stringify(res)).data.experience
+      userdata: res.data.userdata,
+      education: res.data.education,
+      project: res.data.project,
+      experience: res.data.experience,
+      skill:res.data.skill
     })
     
   }, err=>{
@@ -71,6 +77,8 @@ ngOnInit(): void {
   })
  
 }
+
+
 
   saveResumeData() {
     console.log('Saving form DATA');
@@ -85,7 +93,7 @@ ngOnInit(): void {
       console.log('emitting to refrest available resume');
   
      
-      this.router.navigate(['/display']);
+      this.router.navigate(['all']);
     });
     console.log("data is:");
     console.log(finalData); 

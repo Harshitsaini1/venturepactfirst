@@ -2,13 +2,8 @@
 nav{
     background-color: black;
     padding: 34px;
-    ;
-    
     border: 2px solid red;
     border-radius: 10px;
-
-
-
 }
 
 nav ul{
@@ -20,4 +15,5 @@ nav ul li{
     font-size: 20px;
     list-style: none;
 }
+
 

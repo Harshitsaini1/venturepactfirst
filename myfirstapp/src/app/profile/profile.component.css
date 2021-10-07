@@ -1,4 +1,14 @@
+.bck{
+  background-image: url("https://cdn.pixabay.com/photo/2021/09/17/03/24/forest-6631518__340.jpg");
+  height: 95.1vh;
+  width: 100%;
+  /* background-position: center; */
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* block-size: 1000px; */
 
+ 
+}
  
   input{
     outline: none;
@@ -23,7 +33,7 @@
     display: grid;
     place-items: center;
     background: transparent;
-    width: 30%;
+    width: 80%;
     height: 100%;
   }
 

@@ -6,7 +6,7 @@
         <label for="email" class="form-label">Email</label>
         <input name="email" type="email" class="form-control" id="inputEmail" placeholder="Type your Email"
           [(ngModel)]="email" required email>
-        <!-- <span class="help-block" *ngIf="!email.valid">Please Enter Valid Email!</span> -->
+        <!-- <span class="help-block" *ngIf="!email.Valid">Please Enter Valid Email!</span> -->
       </div>
     </div>
     <div class="col-md-6">
@@ -17,14 +17,14 @@
       </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-6 " style="margin: 5px;">
       <div class="form-group">
 
         <button type="submit" (click)="loginUser()" class="btn btn-primary">Sign in</button>
-        <p class="bg-light fs-5 text-muted" *ngIf="showMessage">
+        <!-- <p class="bg-light fs-5 text-muted" *ngIf="showMessage">
           {{logProcessMessage}} <span class="spinner-grow spinner-grow-sm text-danger" role="status"
             aria-hidden="true"></span>
-        </p>
+        </p> -->
       </div>
     </div>
 

@@ -8,6 +8,10 @@ import { FormComponent } from './resume/form/form.component';
 import { DisplayComponent } from './resume/display/display.component';
 import { PlaceholderDirectiveDirective } from './placeholder-directive.directive';
 import { AuthInceptorService } from './service/auth-inceptor.service';
+import { TemplateComponent } from './resume/template/template.component';
+import { MultitemplateComponent } from './resume/multitemplate/multitemplate.component';
+import { FirstComponent } from './first/first.component';
+
 
 
 
@@ -21,6 +25,10 @@ import { AuthInceptorService } from './service/auth-inceptor.service';
          FormComponent,
          DisplayComponent,
          PlaceholderDirectiveDirective,
+         TemplateComponent,
+         MultitemplateComponent,
+         FirstComponent,
+        
         
   ],
   imports: [

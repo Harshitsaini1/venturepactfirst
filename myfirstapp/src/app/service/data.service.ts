@@ -1,7 +1,7 @@
 import { HttpClient, HttpEvent, HttpEventType, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { EventEmitter } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import {Subject } from 'rxjs';
 
 
 @Injectable({
@@ -73,9 +73,6 @@ export class DataService {
 getData(){
   return this.http.get(this.ROOT_URL + '/getResume')
 }
-// editResume(){
-//   return this.http.get(this.ROOT_URL+ "/editResume");
-// }
 
 setResumeData(data: any) {
   // this.resumeData = data;
@@ -103,68 +100,13 @@ setResumeData(data: any) {
 
 
 
-  // postFile(fileToUpload: File | null): Observable<boolean> {
-  //   const formData: FormData = new FormData();
-  //   // @ts-ignore
-  //   formData.append('myfile', fileToUpload, fileToUpload.name);
-  //   const req = new HttpRequest(
-  //     'POST',
-  //     this.ROOT_URL + '/fileUpload',
-  //     formData,
-  //     {
-  //       reportProgress: true,
-  //       headers: new HttpHeaders({
-  //         'Content-Type': 'multipart/form-data',
-  //       }),
-  //     }
-  //   );
-
-  //   // @ts-ignore
-  //   return this.http.request(req).pipe(
-  //     map((event) => DataService.getEventMessage(event, fileToUpload)),
-  //     tap((message) => this.showProgress(message)),
-  //     last(), // return last (completed) message to caller
-  //     catchError((err: any) => {
-  //       console.log(err);
-  //       throw 'error in source. Details: ';
-  //     })
-  //   );
-  // }
-  // private static getEventMessage(event: HttpEvent<any>, file: File | null) {
-  //   console.log(event);
-  //   switch (event.type) {
-  //     case HttpEventType.Sent:
-  //       // @ts-ignore
-  //       return `Uploading file "${file.name}" of size ${file.size}.`;
-
-  //     case HttpEventType.UploadProgress:
-  //       // Compute and show the % done:
-  //       const percentDone = Math.round(
-  //         (100 * event.loaded) / (event.total ?? 0)
-  //       );
-  //       // @ts-ignore
-  //       return `File "${file.name}" is ${percentDone}% uploaded.`;
-
-  //     case HttpEventType.Response:
-  //       // @ts-ignore
-  //       return `File "${file.name}" was completely uploaded!`;
-
-  //     default:
-  //       // @ts-ignore
-  //       return `File "${file.name}" surprising upload event: ${event.type}.`;
-  //   }
-  // }
+  
+  
   showProgress(message: any) {
     console.log('Data mes: ' + message);
   }
  
 
-  // //used in operators rxjs
-  // printEle(data: any, container: string) {
-  //   let el = document.createElement('li');
-  //   el.innerText = data;
-  //   document.getElementById(container)?.appendChild(el);
-  // }
 
 
 }

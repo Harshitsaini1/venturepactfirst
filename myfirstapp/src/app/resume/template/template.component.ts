@@ -1,46 +1,42 @@
-import {
-  Component,
-  OnInit,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DataService } from 'src/app/service/data.service';
-
-import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
+import { DataService } from '../../service/data.service';
 
 @Component({
-  selector: 'app-display',
-  templateUrl: './display.component.html',
-  styleUrls: ['./display.component.css'],
-  encapsulation: ViewEncapsulation.Emulated,
+  selector: 'app-template',
+  templateUrl: './template.component.html',
+  styleUrls: ['./template.component.css']
 })
-export class DisplayComponent implements OnInit {
+
+
+export class TemplateComponent implements OnInit {
 
   constructor(
     private dataservice: DataService,
     private router: Router
   ) { }
   showLoadMessage: boolean = false;
-  myresumedata : any;
+  myresumedata: any;
   showResume: boolean = false;
-  showData =false;
+  showData = false;
   ngOnInit(): void {
 
     this.dataservice.getData().subscribe(
-      (res) => {      
+      (res) => {
         console.log("mydata");
         console.log(res);
         this.myresumedata = JSON.parse(JSON.stringify(res)).data;
-        this.showResume=true;
+        this.showResume = true;
         console.log("myresume data ", this.myresumedata);
         console.log(this.myresumedata.userdata.fname);
         console.log(this.myresumedata.project.pname);
       },
       (err) => console.error(err)
-    );   
-}
-// 
+    );
+  }
+  // 
   // function 
   // http call 
   // click listener
@@ -50,11 +46,10 @@ export class DisplayComponent implements OnInit {
     this.router.navigate(['']);
     console.log("display navigate to home");
   }
-  changeTemplate(){
-    console.log("myresume");
+
+  TemplateChange() {
     this.router.navigate(['all']);
   }
-
 
   Download() {
     const resume: any = document.querySelector('#MyResume');
@@ -64,7 +59,8 @@ export class DisplayComponent implements OnInit {
       const width = pdf.internal.pageSize.getWidth();
       const height = pdf.internal.pageSize.getHeight();
       pdf.addImage(img, 'JPEG', 0, 0, width, height);
-      pdf.save('Resume.pdf');  
-    });  
-  }  
+      pdf.save('Resume.pdf');
+    });
+  }
 }
+

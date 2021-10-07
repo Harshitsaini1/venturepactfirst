@@ -33,7 +33,7 @@ var resumeSchema = mongoose.Schema(
       },
     ],
    
-    skills: [
+    skill: [
       {
         Skills: { type: String },
       },
