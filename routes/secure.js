@@ -2,12 +2,7 @@ var express = require("express");
 var router = express.Router();
 var secureController = require("../controllers/secureng");
 
-// router.get('/secure', (req, res) => {
-//     res.json({
-//         secure: true,
-//         message: 'data con  success'
-//     })
-// })
+
 router.get('/', (req, res) => {
     res.send('api router working')
 })
@@ -64,22 +59,4 @@ router.get("/getCookie", (req, res) => {
 
 
 
-
-
-// router.get("/parsePdf", (req, res) => {
-//     console.log("Parsing pdf start");
-//   });
-  
-//   router.get("/sendMail", async (req, res) => {
-//     const { recipient, message } = req.body;
-//     try {
-//       console.log("Start sending mail");
-//       let ans = await sendEmail("recipient", "message");
-//       console.log(ans);
-//       res.json({ message: "Your query has been sent" });
-//     } catch (e) {
-//       console.log("Error sending mail");
-//       console.log(e);
-//     }
-//   });
 module.exports = router;
